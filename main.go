@@ -17,10 +17,10 @@ import (
 
 // Database configuration - same as temp_query_runner.go
 const (
-	DB_SERVER   = ""
+	DB_SERVER   = "db-otel-test.cszoyw6q4wm8.us-east-1.rds.amazonaws.com"
 	DB_PORT     = "1433"
-	DB_USER     = ""
-	DB_PASSWORD = ""
+	DB_USER     = "aryan_db"
+	DB_PASSWORD = "BabaElaichi"
 	DB_NAME     = "AdventureWorks2022" // Use AdventureWorks2022 for DMV population
 )
 
