@@ -21,7 +21,7 @@ const (
 	DB_PORT     = "1433"
 	DB_USER     = "aryan_db"
 	DB_PASSWORD = "BabaElaichi"
-	DB_NAME     = "AdventureWorks2022" // Use AdventureWorks2022 for DMV population
+	DB_NAME     = "AdventureWorks2019" // Use AdventureWorks2019 for DMV population
 )
 
 // Configuration for DMV population
@@ -40,8 +40,8 @@ SET NOCOUNT ON;
 -- Enable query store if not already enabled (helps with plan tracking)
 IF NOT EXISTS (SELECT 1 FROM sys.database_query_store_options WHERE current_state = 1)
 BEGIN
-    ALTER DATABASE AdventureWorks2022 SET QUERY_STORE = ON;
-    ALTER DATABASE AdventureWorks2022 SET QUERY_STORE (OPERATION_MODE = READ_WRITE);
+    ALTER DATABASE AdventureWorks2019 SET QUERY_STORE = ON;
+    ALTER DATABASE AdventureWorks2019 SET QUERY_STORE (OPERATION_MODE = READ_WRITE);
 END
 
 -- Set trace flags to improve plan caching and prevent anonymization
@@ -52,7 +52,7 @@ DBCC TRACEON(4199); -- Enable additional query optimizations
 PRINT 'SQL Server configured to prevent query anonymization and optimize plan tracking';
 `
 
-// AdventureWorks2022 table metadata for dynamic query generation
+// AdventureWorks2019 table metadata for dynamic query generation
 var AdventureWorksTables = []TableInfo{
 	// Sales tables
 	{Schema: "Sales", Name: "SalesOrderHeader", Columns: []string{"SalesOrderID", "CustomerID", "SalesPersonID", "OrderDate", "DueDate", "ShipDate", "Status", "TotalDue", "TaxAmt", "Freight"}},
@@ -136,7 +136,7 @@ var QueryTemplates = []string{
 }
 
 func main() {
-	fmt.Println("🚀 Starting DMV Populator for AdventureWorks2022")
+	fmt.Println("🚀 Starting DMV Populator for AdventureWorks2019")
 	fmt.Println("📋 Target: Generate 350,000+ diverse queries to populate SQL Server DMVs")
 	fmt.Println("⚡ Configuration: 12 workers, 25 minutes runtime")
 	fmt.Println(strings.Repeat("=", 80))
@@ -242,7 +242,7 @@ func connectToDatabase() *sql.DB {
 		log.Fatal("Error connecting to database: ", err.Error())
 	}
 
-	fmt.Println("✅ Successfully connected to AdventureWorks2022!")
+	fmt.Println("✅ Successfully connected to AdventureWorks2019!")
 	return db
 }
 
