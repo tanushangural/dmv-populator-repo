@@ -26,10 +26,10 @@ const (
 
 // Configuration for DMV population
 const (
-	TARGET_QUERY_COUNT       = 350000 // Target 350k queries (3.5 lakhs)
-	CONCURRENT_WORKERS       = 52     // 12 concurrent workers
-	RUN_DURATION_MINUTES     = 25     // Run for 25 minutes
-	PROGRESS_REPORT_INTERVAL = 5000   // Report progress every 5k queries
+	TARGET_QUERY_COUNT       = 10000 // Target 350k queries (3.5 lakhs)
+	CONCURRENT_WORKERS       = 5     // 12 concurrent workers
+	RUN_DURATION_MINUTES     = 10     // Run for 25 minutes
+	PROGRESS_REPORT_INTERVAL = 200   // Report progress every 5k queries
 )
 
 // SQL Server configuration to prevent query anonymization
