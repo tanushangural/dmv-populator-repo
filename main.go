@@ -242,7 +242,8 @@ func connectToDatabase() *sql.DB {
 		log.Fatal("Error connecting to database: ", err.Error())
 	}
 
-	fmt.Println("✅ Successfully connected to AdventureWorks2019!")
+	fmt.Printf("✅ Successfully connected to database: %s on server: %s\n", DB_NAME, DB_SERVER)
+	log.Printf("📊 Database Connection Info - Server: %s, Port: %s, Database: %s, User: %s", DB_SERVER, DB_PORT, DB_NAME, DB_USER)
 	return db
 }
 
@@ -358,6 +359,9 @@ func runQueryWorker(db *sql.DB, workerID int, queryChan <-chan string, statsChan
 
 	for query := range queryChan {
 		startTime := time.Now()
+
+		// Log the query being executed
+		log.Printf("🔍 Worker %d executing on database [%s]: %s", workerID, DB_NAME, query)
 
 		// Execute query
 		rows, err := db.Query(query)
